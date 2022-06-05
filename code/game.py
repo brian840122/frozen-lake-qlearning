@@ -103,7 +103,7 @@ class Game():
 
     def get_state(self):
         '''Returns the current state of the player'''
-        return (self.x_pos * 8) + self.y_pos 
+        return (self.x_pos * self.max_row) + self.y_pos 
 
     def perform_action(self, action):
         '''
