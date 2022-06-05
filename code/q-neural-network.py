@@ -48,7 +48,7 @@ class QNetwork(nn.Module):
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Init Game Instance
-game = Game(living_penalty=-0.07, render=False)
+game = Game(render=False)
 
 # Define State and Action Space
 state_space = game.max_row * game.max_col
