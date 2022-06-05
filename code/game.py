@@ -15,6 +15,12 @@ MAPS = {
         "FHFFHFHF",
         "FFFHFFFG"
     ],
+    "4x4": [
+        "SFFF",
+        "FHFH",
+        "FFFH",
+        "HFFG"
+    ]
 }
 
 # define some colors for terminal output
