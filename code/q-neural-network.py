@@ -19,7 +19,7 @@ def print_policy():
 
 # define Q-Network
 
-O1 = True
+O1 = False
 O2 = False
 class QNetwork(nn.Module):
 
@@ -40,10 +40,10 @@ class QNetwork(nn.Module):
         if O2:
             out1 = torch.sigmoid(self.l1(x)) #(O)
         else:
-            out1 = self.l1(x)
+            #out1 = self.l1(x)
 
-            #out0 = self.l0(x)
-            #out1 = self.l1(out0)
+            out0 = self.l0(x)
+            out1 = self.l1(out0)
 
         return self.l2(out1) 
 
