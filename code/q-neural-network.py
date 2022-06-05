@@ -34,7 +34,7 @@ class QNetwork(nn.Module):
         x = self.one_hot_encoding(x)
         out1 = torch.sigmoid(self.l1(x))
         return self.l2(out1) 
-
+#test
     def one_hot_encoding(self, x):
         '''
         One-hot encodes the input data, based on the defined state_space.
