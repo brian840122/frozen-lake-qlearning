@@ -137,6 +137,8 @@ for i in range(num_episodes):
             e = 1. / ((i / 50) + 10)
             print("Episode:", i, "|", "Total Rewards", rAll, "| steps:", j)
             break
+        elif j == 99:
+            print("Episode:", i, "|", "Total Rewards", rAll, "| steps:", j, "\n#################")
     rList.append(rAll)
     jList.append(j)
 
