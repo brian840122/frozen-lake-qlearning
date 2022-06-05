@@ -34,7 +34,7 @@ class QNetwork(nn.Module):
         x = self.one_hot_encoding(x)
         out1 = torch.sigmoid(self.l1(x))
         return self.l2(out1) 
-#test
+
     def one_hot_encoding(self, x):
         '''
         One-hot encodes the input data, based on the defined state_space.
@@ -108,8 +108,8 @@ for i in range(num_episodes):
         # print(q, target_q)
         # Calculate loss
         loss = criterion(q, target_q)
-        if j == 1 and i % 100 == 0:
-            print("loss and reward: ", i, loss, r)
+        # if j == 1 and i % 100 == 0:
+        #     print("loss and reward: ", i, loss, r)
 
         # Optimize the model
         optimizer.zero_grad()
@@ -125,6 +125,7 @@ for i in range(num_episodes):
         if game_over:
             # Reduce chance of random action as we train the model.
             e = 1. / ((i / 50) + 10)
+            print("Episode:", i, "|", "Total Rewards", rAll)
             break
     rList.append(rAll)
     jList.append(j)
