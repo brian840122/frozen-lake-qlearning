@@ -30,9 +30,14 @@ class QNetwork(nn.Module):
         self.l1 = nn.Linear(in_features=self.state_space, out_features=self.hidden_size)
         self.l2 = nn.Linear(in_features=self.hidden_size, out_features=action_space)
 
+        # self.l0 = nn.Linear(in_features=self.state_space, out_features=8)
+        # self.l1 = nn.Linear(in_features=8, out_features=2)
+        # self.l2 = nn.Linear(in_features=2, out_features=4)
+
     def forward(self, x):
         x = self.one_hot_encoding(x)
-        out1 = torch.sigmoid(self.l1(x))
+        #out1 = torch.sigmoid(self.l1(x))
+        out1 = self.l1(x)
         return self.l2(out1) 
 
     def one_hot_encoding(self, x):
