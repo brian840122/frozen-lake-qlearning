@@ -19,29 +19,31 @@ def print_policy():
 
 # define Q-Network
 
-
+O1 = True
+O2 = False
 class QNetwork(nn.Module):
 
     def __init__(self, state_space, action_space):
         super(QNetwork, self).__init__()
         self.state_space = state_space
         self.hidden_size = state_space
-
-        self.l1 = nn.Linear(in_features=self.state_space, out_features=self.hidden_size) #(O) 
-        self.l2 = nn.Linear(in_features=self.hidden_size, out_features=action_space) #(O) 
-
-        # self.l0 = nn.Linear(in_features=self.state_space, out_features=8)
-        # self.l1 = nn.Linear(in_features=8, out_features=2)
-        # self.l2 = nn.Linear(in_features=2, out_features=4)
+        if O1:
+            self.l1 = nn.Linear(in_features=self.state_space, out_features=self.hidden_size) #(O) 
+            self.l2 = nn.Linear(in_features=self.hidden_size, out_features=action_space) #(O) 
+        else:
+            self.l0 = nn.Linear(in_features=self.state_space, out_features=8)
+            self.l1 = nn.Linear(in_features=8, out_features=2)
+            self.l2 = nn.Linear(in_features=2, out_features=4)
 
     def forward(self, x):
         x = self.one_hot_encoding(x)
-        out1 = torch.sigmoid(self.l1(x)) #(O)
+        if O2:
+            out1 = torch.sigmoid(self.l1(x)) #(O)
+        else:
+            out1 = self.l1(x)
 
-        # out1 = self.l1(x)
-
-        # out0 = self.l0(x)
-        # out1 = self.l1(out0)
+            #out0 = self.l0(x)
+            #out1 = self.l1(out0)
 
         return self.l2(out1) 
 
