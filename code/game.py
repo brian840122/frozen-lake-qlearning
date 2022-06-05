@@ -20,7 +20,7 @@ MAPS = {
         "FHFH",
         "FFFH",
         "HFFG"
-    ]
+    ],
 }
 
 # define some colors for terminal output
