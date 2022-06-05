@@ -36,9 +36,9 @@ class QNetwork(nn.Module):
 
     def forward(self, x):
         x = self.one_hot_encoding(x)
-        #(O) out1 = torch.sigmoid(self.l1(x))
+        out1 = torch.sigmoid(self.l1(x)) #(O)
 
-        out1 = self.l1(x)
+        # out1 = self.l1(x)
 
         # out0 = self.l0(x)
         # out1 = self.l1(out0)
