@@ -110,6 +110,7 @@ for i in range(num_episodes):
         r, s1, game_over = game.perform_action(actions[a])
 
         # Calculate Q and target Q
+        #q = agent(s).max(1)[0].view(1, 1) #(O)
         q = agent(s).max(1)[0].view(1, 1)
         q1 = agent(s1).max(1)[0].view(1, 1)
 
