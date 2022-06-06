@@ -19,8 +19,8 @@ def print_policy():
 
 # define Q-Network
 
-O1 = False
-O2 = False
+O1 = 1
+O2 = 1
 class QNetwork(nn.Module):
 
     def __init__(self, state_space, action_space):
