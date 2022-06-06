@@ -137,8 +137,8 @@ for i in range(num_episodes):
 
         if game_over:
             # Reduce chance of random action as we train the model.
-            #e = 1. / ((i / 50) + 10) #(O)
-            e = 1. / ((i / 500) + 1)
+            e = 1. / ((i / 50) + 10) #(O)
+            #e = 1. / ((i / 500) + 1)
             print("Episode:", i, "|", "Total Rewards", rAll, "| steps:", j)
             break
         elif j == 99:
