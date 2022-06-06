@@ -62,7 +62,7 @@ class Game():
         render -- (boolean) whether to render the game or not
     '''
 
-    def __init__(self, living_penalty=-0.01, map_size='8x8', render=True):
+    def __init__(self, living_penalty=-0.07, map_size='8x8', render=True):
         map_layout = np.asarray(MAPS[map_size], dtype='c')
         self.max_row, self.max_col = map_layout.shape
 
@@ -94,7 +94,7 @@ class Game():
             if self.render:
                 sys.stdout.write(RED)
                 sys.stdout.write('\n Agent walked into a hole! Game Over!')
-            return -0.2 #-1
+            return -1 #-1
         if label in 'G':
             self.game_over = True
             if self.render:
