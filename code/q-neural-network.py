@@ -111,7 +111,7 @@ for i in range(num_episodes):
 
         # Calculate Q and target Q
         #q = agent(s).max(1)[0].view(1, 1) #(O)
-        q = agent(s).max(1)[0].view(1, 1)
+        q = agent(s)[0][a[0][0]].view(1, 1)
         q1 = agent(s1).max(1)[0].view(1, 1)
 
         with torch.no_grad():
