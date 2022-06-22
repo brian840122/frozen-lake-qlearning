@@ -114,6 +114,7 @@ for i in range(num_episodes):
         # Calculate Q and target Q
         #q = agent(s).max(1)[0].view(1, 1) #(O)
         q = agent(s)[0][a[0][0]].view(1, 1)
+        print(q)
         if game_over:
             q1 = 0
         else:
