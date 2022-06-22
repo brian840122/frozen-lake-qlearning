@@ -126,7 +126,7 @@ class Game():
             if self.render:
                 sys.stdout.write(RED)
                 sys.stdout.write('\n Agent walked into a hole! Game Over!')
-            return -0.2 #-1
+            return -1 #-1
         if label in 'G':
             self.game_over = True
             if self.render:
