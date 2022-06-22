@@ -114,12 +114,11 @@ for i in range(num_episodes):
         # Calculate Q and target Q
         #q = agent(s).max(1)[0].view(1, 1) #(O)
         q = agent(s)[0][a[0][0]].view(1, 1)
-        print("q", q)
-        if game_over:
-            q1 = 0
-        else:
-            q1 = max(agent(s1).max(1)[0].view(1, 1), 0)
-        print("q1", q1)
+        #print("q", q)
+        q1 = agent(s1).max(1)[0].view(1, 1)
+        if game_over or q1[0][0]<0:
+            q1[0][0] = 0
+        #print("q1", q1)
         with torch.no_grad():
             # Set target Q-value for action to: r + y max_a’ Q(s’, a’)
             target_q = r + y * q1
