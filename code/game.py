@@ -36,7 +36,7 @@ for i in range(len(env_)):
 
 MAPS = {
     "64x64": [map_64x64],
-    
+
     "8x8": [
         "SFFFFFFF",
         "FFFFFFFF",
@@ -131,7 +131,7 @@ class Game():
             self.game_over = True
             if self.render:
                 sys.stdout.write('\n Agent walked into the goal! You won the Game!')
-            return 1
+            return 2
 
     def get_state(self):
         '''Returns the current state of the player'''
