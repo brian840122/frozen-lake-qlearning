@@ -83,15 +83,16 @@ agent = QNetwork(state_space, action_space).to(device)
 # optimizer = optim.SGD(agent.parameters(), lr=lr)
 optimizer = optim.Adam(params=agent.parameters())
 criterion = nn.SmoothL1Loss()
+EPISODES_WITH_TIPS = [*range(0,num_episodes,50)]
+opt_actions = [2]*63+[1]*63
 
 for i in range(num_episodes):
     # Reset environment and get first new observation
     s = game.reset()
     rAll = 0
     j = 0
-
     # The Q-Network learning algorithm
-    while j < 99:
+    while j < 350:
         j += 1
 
         # Choose an action by greedily (with e chance of random action) from the Q-network
@@ -103,7 +104,8 @@ for i in range(num_episodes):
         # e greedy exploration
         if np.random.rand(1) < e:
             a[0][0] = np.random.randint(1, 4)
-
+        if i in EPISODES_WITH_TIPS:
+            a[0][0] =  opt_actions[j-1]
         # Get new state and reward from environment
         # perform action to get reward r, next state s1 and game_over flag
         # calculate maximum overall network outputs: max_a’ Q(s1, a’).
@@ -141,7 +143,7 @@ for i in range(num_episodes):
             e = 1. / ((i / 500) + 1)
             print("Episode:", i, "|", "Total Rewards", rAll, "| steps:", j)
             break
-        elif j == 99:
+        elif j == 350:
             print("Episode:", i, "|", "Total Rewards", rAll, "| steps:", j, "\n#################")
     rList.append(rAll)
     jList.append(j)
