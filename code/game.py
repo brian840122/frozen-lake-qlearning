@@ -35,7 +35,7 @@ for i in range(len(env_)):
 
 
 MAPS = {
-    "64x64": [map_64x64],
+    "64x64": map_64x64,
 
     "8x8": [
         "SFFFFFFF",
