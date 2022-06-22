@@ -4,7 +4,39 @@ import os
 from util.getkey import get_manual_arrow_key
 
 # define the map
+F = -0.01
+H = -1
+G = 1
+rng = np.random.RandomState(2021)
+not_hole_0 = rng.randint(0,2,size=(64,64)).astype(bool)
+not_hole_1 = rng.randint(0,2,size=(64,64)).astype(bool)
+not_hole = not_hole_0 + not_hole_1
+env_ = np.ones((64,64))*F
+env_[~not_hole] = H
+env_[::21] = F
+env_[:,::21] = F
+env_[-1][-1] = G
+
+map_64x64 = []
+for i in range(len(env_)):
+    str_i = ""
+    for j in range(len(env_[0])):
+        if env_[i][j]==F:
+            if i==0 and j==0:
+                str_i+="S"
+            else:
+                str_i+="F"
+        elif env_[i][j]==H:
+            str_i+="H"
+        else:
+            str_i+="G"
+    map_64x64.append(str_i)
+
+
+
 MAPS = {
+    "64x64": [map_64x64],
+    
     "8x8": [
         "SFFFFFFF",
         "FFFFFFFF",
